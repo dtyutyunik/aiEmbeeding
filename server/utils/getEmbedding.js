@@ -1,6 +1,5 @@
 const dotenv = require("dotenv");
 const path = require("path");
-//environment variables
 
 dotenv.config({ path: path.join(__dirname, "../../.env") });
 if (!process.env.OPENAI_API_KEY) {

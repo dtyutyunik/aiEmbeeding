@@ -6,7 +6,6 @@ const Embedding = () => {
   const [wordTwo, setWordTwo] = useState("");
   const [result, setResult] = useState("");
   const [prompt, setPrompt] = useState("");
-  const [responseok, setResponseok] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -16,7 +15,6 @@ const Embedding = () => {
       setError("Please enter a prompt!");
       setPrompt("");
       setResult("");
-
       return;
     }
 
@@ -30,16 +28,14 @@ const Embedding = () => {
 
     try {
       if (response.ok) {
-        setResponseok(true);
         const data = await response.json();
         console.log(data);
         setPrompt(`Similarity between ${wordOne} and ${wordTwo}.`);
-        setResult(data.similarity);
+        setResult(data?.similarity);
         setWordOne("");
         setWordTwo("");
         setError("");
       } else {
-        setResponseok(false);
         throw new Error("An error occurred");
       }
     } catch (error) {
